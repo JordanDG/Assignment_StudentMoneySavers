@@ -12,12 +12,12 @@ import AboutPage from "./pages/AboutPage";
 import FAQ from "./pages/FAQ"
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdateProfile from "./pages/UpdateProfile";
+import Error404 from "./pages/Error404";
 // Router //
 import GlobalStyle from "../theme/globalstyles";
 // React-Router //
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-
 
 function App() {
   const auth = useAuth();
@@ -29,11 +29,11 @@ function App() {
         <AuthProvider>
           <Routes>
             <Route index path="/" element={<Home />} />
-            <Route element={<PrivateRoute/>}>
-              <Route exact path="/dashboard" element={<Dashboard/>}/>
+            <Route>
+              <Route exact path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
             </Route>
-            <Route element={<PrivateRoute/>}>
-              <Route exact path="/update-profile" element={<UpdateProfile/>}/>
+            <Route>
+              <Route exact path="/update-profile" element={<PrivateRoute><UpdateProfile/></PrivateRoute>}/>
             </Route>
             <Route path="/signup" element={<Signup/>} />
             <Route path="/login" element={<Login/>} />
@@ -42,6 +42,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/FAQ" element={<FAQ />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </AuthProvider>
       </Router>

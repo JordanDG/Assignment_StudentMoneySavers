@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import LoggedOutHeader from '../headers/LoggedOutHeader';
+import LoggedInHeader from '../headers/LoggedInHeader';
 import breakpoint from '../../devices/breakpoints';
 import BurgerNav from '../page-components/BurgerNav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -110,7 +110,7 @@ export default function ReportProblemPage() {
     return (
         <>  
             <BurgerNav />
-            <LoggedOutHeader />
+            <LoggedInHeader />
             <MainContainer>
                 <ProblemLeftContainer>
                     <ProblemTitle>Report A Problem</ProblemTitle>

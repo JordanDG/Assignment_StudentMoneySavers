@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import BurgerNav from '../page-components/BurgerNav';
-import LoggedOutHeader from '../headers/LoggedOutHeader';
+import LoggedInHeader from '../headers/LoggedInHeader';
 import ReportProblem from '../page-components/ReportProblem';
 import breakpoint from '../../devices/breakpoints';
 // Import Thumbnails //
@@ -190,7 +190,7 @@ export default function AboutPage() {
     return (
         <>
             <BurgerNav />
-            <LoggedOutHeader />
+            <LoggedInHeader />
             <AboutContainer>
             <AboutContainerLeft>
                 <AboutHeader>About StudentMoneySavers</AboutHeader>

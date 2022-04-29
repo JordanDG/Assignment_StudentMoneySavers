@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import breakpoint from '../../devices/breakpoints';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../../contexts/AuthContext';
 
 const BurgerBtn = styled.button`
     @media ${breakpoint.device.lg} {
@@ -98,6 +99,7 @@ const NavigationLinkText = styled(Link)`
 
 export default function BurgerNav() {
     const [showMenu, setShowMenu] = useState(false);
+    let auth = useAuth();
 
     let menu;
     let menuMask;
@@ -105,9 +107,21 @@ export default function BurgerNav() {
     if(showMenu) {
         menu = 
         <HambugerMenu>
-            <HamBurgerNavigationLinks><NavigationLinkText to="/home">Home</NavigationLinkText></HamBurgerNavigationLinks>
-            <HamBurgerNavigationLinks><NavigationLinkText to="/about">About</NavigationLinkText></HamBurgerNavigationLinks>
-            <HamBurgerNavigationLinks><NavigationLinkText to="/contact">Contact</NavigationLinkText></HamBurgerNavigationLinks>
+            { auth.currentUser ?
+            <>
+                <HamBurgerNavigationLinks><NavigationLinkText to="/home">Home</NavigationLinkText></HamBurgerNavigationLinks>
+                <HamBurgerNavigationLinks><NavigationLinkText to="/update-profile">Account</NavigationLinkText></HamBurgerNavigationLinks>
+                <HamBurgerNavigationLinks><NavigationLinkText to="/contact">Contact</NavigationLinkText></HamBurgerNavigationLinks>
+                <HamBurgerNavigationLinks><NavigationLinkText to="/faq">FAQ</NavigationLinkText></HamBurgerNavigationLinks>
+            </>
+            :
+            <>
+                <HamBurgerNavigationLinks><NavigationLinkText to="/home">Home</NavigationLinkText></HamBurgerNavigationLinks>
+                <HamBurgerNavigationLinks><NavigationLinkText to="/about">About</NavigationLinkText></HamBurgerNavigationLinks>
+                <HamBurgerNavigationLinks><NavigationLinkText to="/contact">Contact</NavigationLinkText></HamBurgerNavigationLinks>
+                <HamBurgerNavigationLinks><NavigationLinkText to="/faq">FAQ</NavigationLinkText></HamBurgerNavigationLinks>
+            </>
+            }
         </HambugerMenu>
         menuMask = <HamburgerMask onClick={() => setShowMenu(false)}></HamburgerMask>
     }

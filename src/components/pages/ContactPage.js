@@ -7,9 +7,7 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { keyframes } from 'styled-components';
 import ContactForm from '../page-components/ContactForm';
 // Headers for conditional rendering //
-import LoggedOutHeader from '../headers/LoggedOutHeader';
 import LoggedInHeader from '../headers/LoggedInHeader';
-import { useAuth } from '../../contexts/AuthContext';
 
 const MainContainer = styled.div`  
     @media ${breakpoint.device.sm} {
@@ -109,18 +107,10 @@ const ProblemArrowH1 = styled.h1`
 `;
 
 export default function ContactPage() {
-    const { currentUser } = useAuth();
-    let status = false;
-
-    if (currentUser === null) {
-        status = false;
-    } else {
-        status = true;
-    }
     return (
         <>  
             <BurgerNav />
-            { status ? <LoggedInHeader/> : <LoggedOutHeader/> }
+            <LoggedInHeader />
             <MainContainer>
                 <ProblemLeftContainer>
                     <ProblemTitle>Contact Us</ProblemTitle>

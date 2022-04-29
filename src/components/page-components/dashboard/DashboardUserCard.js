@@ -194,9 +194,9 @@ const EditHeader = styled.h1`
     width: 100%;
     font-size: 38px;
     font-weight: 500;
-    margin-top: 50px;
+    margin-top: 20px;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 `;
 
 const EditLabel = styled.label`
@@ -226,7 +226,7 @@ const EditUpdateBudget = styled.button`
     border-radius: 10px;
     border: 0;
     transition: all 0.5s ease-in-out;
-    height: 100px;
+    height: 50px;
     margin-bottom: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background: linear-gradient(225deg, rgba(245,56,85,1) 0%, rgba(0,64,228,1) 100%);

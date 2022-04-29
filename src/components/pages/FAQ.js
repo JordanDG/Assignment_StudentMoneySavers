@@ -6,9 +6,7 @@ import breakpoint from '../../devices/breakpoints';
 import FAQModule from '../page-components/FAQModule';
 import { Link } from 'react-router-dom';
 // Headers for conditional rendering //
-import LoggedOutHeader from '../headers/LoggedOutHeader';
 import LoggedInHeader from '../headers/LoggedInHeader';
-import { useAuth } from '../../contexts/AuthContext';
 
 const FAQMainContainer = styled.div`
 @media ${breakpoint.device.xs} {
@@ -113,19 +111,10 @@ const ContactUsLink = styled(Link)`
 `;
 
 export default function FAQ() {
-    const { currentUser } = useAuth();
-    let status = false;
-
-    if (currentUser === null) {
-        status = false;
-    } else {
-        status = true;
-    }
-
     return (
         <>
             <BurgerNav />
-            { status ? <LoggedInHeader /> : <LoggedOutHeader/> }
+            <LoggedInHeader />
             <FAQMainContainer>
                 <FAQTitle>Frequently Asked Questions</FAQTitle>
                 <FAQModuleOrganiser>

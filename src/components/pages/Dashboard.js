@@ -11,6 +11,7 @@ import BurgerNav from '../page-components/BurgerNav';
 import Tips from '../page-components/dashboard/Tips';
 import Activity from '../page-components/dashboard/Activity';
 import DashboardUserCard from '../page-components/dashboard/DashboardUserCard';
+import Calendar from "../page-components/dashboard/Calendar";
 
 const DashboardMain = styled.div`
     @media ${breakpoint.device.xs} {
@@ -81,7 +82,7 @@ const DashBoardRight = styled.div`
 const ActivityContainer = styled.div`
     @media ${breakpoint.device.xs} {
         width: 90vw;
-    }    
+    }
 
     @media ${breakpoint.device.sm} {
         width: 90vw;
@@ -134,7 +135,8 @@ export default function Dashboard() {
                 </DashBoardLeft>
                 <DashBoardRight>
                     <CalendarContainer>
-                        <SectionHeader>Calendar:</SectionHeader>
+                        <SectionHeader>Calendar View:</SectionHeader>
+                        <Calendar />
                     </CalendarContainer>
                     <Tips />
                 </DashBoardRight>

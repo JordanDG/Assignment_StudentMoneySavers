@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import logoMain from '../../images/LogoMain.png';
 import { Link } from 'react-router-dom';
 import breakpoint from '../../devices/breakpoints';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Logo = styled.img`
     width: 250px;
@@ -15,7 +16,6 @@ const Logo = styled.img`
 `;
 
 const HeaderMainContainer = styled.div`
-
 @media ${breakpoint.device.sm} {
     width: 80vw;
     height: 15vh;
@@ -35,8 +35,6 @@ const HeaderMainContainer = styled.div`
     align-items: center;
     justify-content: center;
 }
-
-
 `;
 
 const FlexContainer = styled.div`
@@ -83,17 +81,28 @@ const NavigationLinkText = styled(Link)`
 `;
 
 export default function LoggedInHeader() {
+    let auth = useAuth();
+
     return (
     <>
         <HeaderMainContainer>
             <FlexContainer>
                 <Logo src={logoMain} alt="SMS Logo"/>
+                { auth.currentUser ?
                 <NavigationLinkUL>
                     <NavigationLinkLi><NavigationLinkText to="/dashboard">Home</NavigationLinkText></NavigationLinkLi>
                     <NavigationLinkLi><NavigationLinkText to="/update-profile">Account</NavigationLinkText></NavigationLinkLi>
                     <NavigationLinkLi><NavigationLinkText to="/contact">Contact</NavigationLinkText></NavigationLinkLi>
                     <NavigationLinkLi><NavigationLinkText to="/faq">FAQ</NavigationLinkText></NavigationLinkLi>
                 </NavigationLinkUL>
+                : 
+                <NavigationLinkUL>
+                    <NavigationLinkLi><NavigationLinkText to="/">Home</NavigationLinkText></NavigationLinkLi>
+                    <NavigationLinkLi><NavigationLinkText to="/about">About</NavigationLinkText></NavigationLinkLi>
+                    <NavigationLinkLi><NavigationLinkText to="/contact">Contact</NavigationLinkText></NavigationLinkLi>
+                    <NavigationLinkLi><NavigationLinkText to="/faq">FAQ</NavigationLinkText></NavigationLinkLi>
+                </NavigationLinkUL>
+                }
             </FlexContainer>
         </HeaderMainContainer>
     </>

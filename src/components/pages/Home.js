@@ -4,7 +4,9 @@ import logo from '../../images/Logo.png';
 import { Link } from 'react-router-dom';
 
 // Import Elements //
-import MainHeader from '../headers/LoggedOutHeader';
+import LoggedInHeader from '../headers/LoggedInHeader';
+import BurgerNav from '../page-components/BurgerNav';
+import breakpoint from '../../devices/breakpoints';
 import ReportProblem from '../page-components/ReportProblem';
 
 const HomeContainer = styled.div`
@@ -32,6 +34,8 @@ const HomeTitleMain = styled.h1`
     font-size: 48px;
     font-weight: 500;
     word-spacing: 10px;
+    text-align: center;
+    width: 100%;
     letter-spacing: 2.5px;
 `;
 
@@ -44,17 +48,39 @@ const Underline = styled.div`
 `;
 
 const HomeSplashMain = styled.p`
+    @media ${breakpoint.device.xs} {
+        width: 90%;
+    }
+
+    @media ${breakpoint.device.sm} {
+        width: 60%;
+    }
+
+    @media ${breakpoint.device.lg} {
+        width: 30%;
+    }
+
     font-size: 24px;
     font-weight: 300;
     margin-top: 30px;
-    width: 30%;
     text-align: center;
     word-spacing: 5px;
     letter-spacing: 0.5px;
 `;
 
 const HomeButtonContainer = styled.div`
-    width: 20%;
+    @media ${breakpoint.device.xs} {
+        width: 90%;
+    }
+
+    @media ${breakpoint.device.sm} {
+        width: 50%;
+    }
+
+    @media ${breakpoint.device.lg} {
+        width: 20%;
+    }
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -94,8 +120,9 @@ const HomeOrLink = styled(Link)`
 export default function Home() {
     return (
         <>
+            <BurgerNav />
             <HomeContainer>
-                <MainHeader />
+                <LoggedInHeader />
                 <HomeMainContentContainer>
                     <HomeLogoMain src={logo} alt="Student Money Savers Logo" />
                     <HomeTitleMain>Student Money Savers</HomeTitleMain>
